@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.stereotype.Component;
@@ -50,5 +52,6 @@ public class SerieModelV1 implements Serializable {
 	private String rating;
 	
 	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date modified;
 }

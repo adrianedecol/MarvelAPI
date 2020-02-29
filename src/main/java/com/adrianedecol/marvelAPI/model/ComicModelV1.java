@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.stereotype.Component;
@@ -51,6 +53,7 @@ public class ComicModelV1 implements Serializable {
 	private String description;
 	
 	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date modified;
 	
 	@Column
@@ -77,8 +80,9 @@ public class ComicModelV1 implements Serializable {
 	@Column
 	private String resourceURI;
 	
-	/*@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "character_id")
-    private CharacterModelV1 character;*/
+	/*@ManyToMany(mappedBy = "comics")
+    private List<CharacterModelV1> characters;
+    
+    */
 
 }

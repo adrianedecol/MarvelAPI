@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.internal.IgnoreForbiddenApisErrors;
 import org.springframework.boot.context.properties.ConstructorBinding;
@@ -43,12 +45,15 @@ public class EventModelV1 implements Serializable {
 	private String resourceURI;
 	
 	@Column
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date modified;
 	
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date start;
 	
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date end;
 
 }
