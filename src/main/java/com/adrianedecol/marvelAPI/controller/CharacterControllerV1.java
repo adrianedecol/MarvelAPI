@@ -2,6 +2,8 @@ package com.adrianedecol.marvelAPI.controller;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,23 +11,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.adrianedecol.marvelAPI.model.CharactersModelV1;
-import com.adrianedecol.marvelAPI.repository.CharactersRepositoryV1;
+import com.adrianedecol.marvelAPI.model.CharacterModelV1;
+import com.adrianedecol.marvelAPI.model.ComicModelV1;
+import com.adrianedecol.marvelAPI.service.CharacterServiceV1;
 
 @RestController
 @RequestMapping("v1/public/characters")
-public class CharactersControllerV1 {
+public class CharacterControllerV1 {
 	
 	@Autowired
-	private CharactersRepositoryV1 repository;
+	private CharacterServiceV1 service;
+	@Autowired
+	private CharacterModelV1 character;
 	
 	/**
 	 * Fetches lists of characters
 	 * @return
 	 */
 	@RequestMapping("")
-	public ResponseEntity<List<CharactersModelV1>> getCharacters() {
-		List<CharactersModelV1> characters = repository.findAll();
+	public ResponseEntity<List<CharacterModelV1>> getCharacters() {
+		List<CharacterModelV1> characters = service.findAll();
 		return new ResponseEntity<>(characters, HttpStatus.OK);
 	}
 	
@@ -35,8 +40,13 @@ public class CharactersControllerV1 {
 	 * @return
 	 */
 	@RequestMapping("/{characterId}")
-	public String getCharacter(@PathVariable int characterId) {
-		return "helloooo Marvel API {characterId}";
+	public ResponseEntity<CharacterModelV1> getCharacter(@PathVariable Integer characterId) {
+		try {
+			character = service.findById(characterId);
+		} catch (EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}		
+		return new ResponseEntity<>(character, HttpStatus.OK);
 	}
 	
 	/**
@@ -45,8 +55,13 @@ public class CharactersControllerV1 {
 	 * @return
 	 */
 	@RequestMapping("/{characterId}/comics")
-	public String getCharacterComics(@PathVariable int characterId) {
-		return "helloooo Marvel API {characterId}/comics";
+	public ResponseEntity<List<ComicModelV1>> getCharacterComics(@PathVariable int characterId) {
+		try {
+			character = service.findById(characterId);
+		} catch (EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}		
+		return new ResponseEntity<>(character.getComics(), HttpStatus.OK);
 	}
 	
 	/**
