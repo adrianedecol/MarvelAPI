@@ -13,7 +13,7 @@ API de catálogo de super-heróis da Marvel, baseado em https://developer.marvel
 | [Maven](https://maven.apache.org/) | Ferramenta de gestão de dependências e build  |
 | [JUnit 5](https://junit.org/junit5/) | Utilizado para execução dos testes da app |
 | [Lombok](https://projectlombok.org) | Ferramenta utilitária para geração de código em Java com foco em diminuir o boilerplate |
-| [H2] (https://www.h2database.com/html/main.html) | Banco de dados em memória do Java |
+| [H2](https://www.h2database.com/html/main.html) | Banco de dados em memória do Java |
 
 ## Execução
 
