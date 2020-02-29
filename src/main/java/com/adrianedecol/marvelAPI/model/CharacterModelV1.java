@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="CHARACTERS")
+@Table(name="CHARACTER")
 @Getter
 @Setter
 @ConstructorBinding
@@ -52,8 +52,23 @@ public class CharacterModelV1 implements Serializable {
 	@Column(name = "thumbnail")
 	private byte[] thumbnail;
 
-	@OneToMany(/*mappedBy = "character", */fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "character_id")
 	private List<ComicModelV1> comics;
+	
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "character_id")
+	private List<EventModelV1> events;
+	
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "character_id")
+	private List<SerieModelV1> series;
+	
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "character_id")
+	private List<StoryModelV1> stories;
 	
 }

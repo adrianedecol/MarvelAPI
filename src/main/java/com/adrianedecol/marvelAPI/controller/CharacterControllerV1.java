@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.adrianedecol.marvelAPI.model.CharacterModelV1;
 import com.adrianedecol.marvelAPI.model.ComicModelV1;
+import com.adrianedecol.marvelAPI.model.EventModelV1;
+import com.adrianedecol.marvelAPI.model.SerieModelV1;
+import com.adrianedecol.marvelAPI.model.StoryModelV1;
 import com.adrianedecol.marvelAPI.service.CharacterServiceV1;
 
 @RestController
@@ -70,8 +73,13 @@ public class CharacterControllerV1 {
 	 * @return
 	 */
 	@RequestMapping("/{characterId}/events")
-	public String getCharacterEvents(@PathVariable int characterId) {
-		return "helloooo Marvel API {characterId}/events";
+	public ResponseEntity<List<EventModelV1>> getCharacterEvents(@PathVariable int characterId) {
+		try {
+			character = service.findById(characterId);
+		} catch (EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}		
+		return new ResponseEntity<>(character.getEvents(), HttpStatus.OK);
 	}
 
 	/**
@@ -80,8 +88,13 @@ public class CharacterControllerV1 {
 	 * @return
 	 */
 	@RequestMapping("/{characterId}/series")
-	public String getCharacterSeries(@PathVariable int characterId) {
-		return "helloooo Marvel API {characterId}/series";
+	public ResponseEntity<List<SerieModelV1>> getCharacterSeries(@PathVariable int characterId) {
+		try {
+			character = service.findById(characterId);
+		} catch (EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}		
+		return new ResponseEntity<>(character.getSeries(), HttpStatus.OK);
 	}
 	
 	/**
@@ -90,7 +103,12 @@ public class CharacterControllerV1 {
 	 * @return
 	 */
 	@RequestMapping("/{characterId}/stories")
-	public String getCharacterStories(@PathVariable int characterId) {
-		return "helloooo Marvel API {characterId}/stories";
+	public ResponseEntity<List<StoryModelV1>> getCharacterStories(@PathVariable int characterId) {
+		try {
+			character = service.findById(characterId);
+		} catch (EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}		
+		return new ResponseEntity<>(character.getStories(), HttpStatus.OK);
 	}
 }

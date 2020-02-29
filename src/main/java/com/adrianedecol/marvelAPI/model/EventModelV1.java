@@ -6,13 +6,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.internal.IgnoreForbiddenApisErrors;
 import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.stereotype.Component;
 
@@ -21,14 +19,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="COMIC")
+@Table(name="EVENT")
 @Getter
 @Setter
 @ConstructorBinding
 @NoArgsConstructor
 @Component
-public class ComicModelV1 implements Serializable {
-
+public class EventModelV1 implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -36,49 +34,21 @@ public class ComicModelV1 implements Serializable {
 	private Integer id;
 	
 	@Column
-	private Integer digitalId;
-	
-	@Column
 	private String title;
-	
-	@Column
-	private BigDecimal issueNumber;
-	
-	@Column
-	private String variantDescription;
 	
 	@Column
 	private String description;
 	
 	@Column
+	private String resourceURI;
+	
+	@Column
 	private Date modified;
 	
 	@Column
-	private String isbn;
+	private Date start;
 	
 	@Column
-	private String upc;
-	
-	@Column
-	private String diamondCode;
-	
-	@Column
-	private String ean;
-	
-	@Column
-	private String issn;
-	
-	@Column
-	private String format;
-	
-	@Column
-	private Integer pageCount;
-	
-	@Column
-	private String resourceURI;
-	
-	/*@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "character_id")
-    private CharacterModelV1 character;*/
+	private Date end;
 
 }
