@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adrianedecol.marvelAPI.model.CharacterModelV1;
-import com.adrianedecol.marvelAPI.model.ComicModelV1;
 import com.adrianedecol.marvelAPI.repository.CharacterRepositoryV1;
 
 @Service

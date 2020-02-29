@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
@@ -61,24 +62,28 @@ public class CharacterModelV1 implements Serializable {
     @JoinTable(name = "character_comic", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "comic_id"))
+    @Lazy
     private List<ComicModelV1> comics;
     
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "character_event", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "event_id"))
+    @Lazy
     private List<EventModelV1> events;
     
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "character_serie", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "serie_id"))
+    @Lazy
     private List<SerieModelV1> series;
     
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(name = "character_story", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "story_id"))
+    @Lazy
     private List<StoryModelV1> stories;
 	
 }

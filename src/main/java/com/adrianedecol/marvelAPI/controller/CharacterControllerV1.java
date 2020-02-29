@@ -7,6 +7,7 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,10 +32,9 @@ public class CharacterControllerV1 {
 	 * Fetches lists of characters
 	 * @return
 	 */
-	@RequestMapping("")
+	@GetMapping
 	public ResponseEntity<List<CharacterModelV1>> getCharacters() {
-		List<CharacterModelV1> characters = service.findAll();
-		return new ResponseEntity<>(characters, HttpStatus.OK);
+		return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class CharacterControllerV1 {
 	 * @param characterId
 	 * @return
 	 */
-	@RequestMapping("/{characterId}")
+	@GetMapping("/{characterId}")
 	public ResponseEntity<CharacterModelV1> getCharacter(@PathVariable Integer characterId) {
 		try {
 			character = service.findById(characterId);
@@ -57,7 +57,7 @@ public class CharacterControllerV1 {
 	 * @param characterId
 	 * @return
 	 */
-	@RequestMapping("/{characterId}/comics")
+	@GetMapping("/{characterId}/comics")
 	public ResponseEntity<List<ComicModelV1>> getCharacterComics(@PathVariable int characterId) {
 		try {
 			character = service.findById(characterId);
@@ -72,7 +72,7 @@ public class CharacterControllerV1 {
 	 * @param characterId
 	 * @return
 	 */
-	@RequestMapping("/{characterId}/events")
+	@GetMapping("/{characterId}/events")
 	public ResponseEntity<List<EventModelV1>> getCharacterEvents(@PathVariable int characterId) {
 		try {
 			character = service.findById(characterId);
@@ -87,7 +87,7 @@ public class CharacterControllerV1 {
 	 * @param characterId
 	 * @return
 	 */
-	@RequestMapping("/{characterId}/series")
+	@GetMapping("/{characterId}/series")
 	public ResponseEntity<List<SerieModelV1>> getCharacterSeries(@PathVariable int characterId) {
 		try {
 			character = service.findById(characterId);
@@ -102,7 +102,7 @@ public class CharacterControllerV1 {
 	 * @param characterId
 	 * @return
 	 */
-	@RequestMapping("/{characterId}/stories")
+	@GetMapping("/{characterId}/stories")
 	public ResponseEntity<List<StoryModelV1>> getCharacterStories(@PathVariable int characterId) {
 		try {
 			character = service.findById(characterId);
