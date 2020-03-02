@@ -26,7 +26,7 @@ import lombok.ToString;
 @ToString
 @Component
 @Entity
-@Table(name="EVENT")
+@Table(name="TB_EVENT")
 public class EventModelV1 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

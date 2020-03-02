@@ -26,7 +26,7 @@ import lombok.ToString;
 @ToString
 @Component
 @Entity
-@Table(name="SERIE")
+@Table(name="TB_SERIE")
 public class SerieModelV1 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

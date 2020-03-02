@@ -34,7 +34,7 @@ import lombok.ToString;
 @ToString
 @Component
 @Entity
-@Table(name="CHARACTER")
+@Table(name="TB_CHARACTER")
 public class CharacterModelV1 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -60,29 +60,29 @@ public class CharacterModelV1 implements Serializable {
 	@Column(name = "thumbnail")
 	private byte[] thumbnail;
 	
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "character_comic", 
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_CHARACTER_COMIC", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "comic_id"))
     @Lazy
     private List<ComicModelV1> comics;
     
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "character_event", 
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_CHARACTER_EVENT", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "event_id"))
     @Lazy
     private List<EventModelV1> events;
     
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "character_serie", 
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_CHARACTER_SERIE", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "serie_id"))
     @Lazy
     private List<SerieModelV1> series;
     
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-    @JoinTable(name = "character_story", 
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinTable(name = "TB_CHARACTER_STORY", 
     	joinColumns = @JoinColumn(name = "character_id"), 
     	inverseJoinColumns = @JoinColumn(name = "story_id"))
     @Lazy
