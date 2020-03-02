@@ -16,6 +16,7 @@ API de catálogo de super-heróis da Marvel, baseado em https://developer.marvel
 | [H2](https://www.h2database.com/html/main.html) | Banco de dados em memória do Java |
 
 ## Execução
+Os dados ficam armazenados no banco h2 em memória e são recriados toda vez que a aplicação for encerrada, não sendo necessário rodar nenhum script.
 
 ### Execução local IDE 
 A aplicação pode ser executada e alterada por uma IDE Java (Eclipse, IntelliJ IDEA, etc). O formato da abertura/importação do processo vai depender da IDE adotada.

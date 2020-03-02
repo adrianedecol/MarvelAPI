@@ -28,7 +28,7 @@ public class CharacterServiceV1 {
 		if (character.isPresent()) {
 			return character.get();
 		}
-		throw new EntityNotFoundException("Herói não encontrado");
+		throw new EntityNotFoundException("Herói não encontrado " + String.valueOf(id));
 	}
 
 }

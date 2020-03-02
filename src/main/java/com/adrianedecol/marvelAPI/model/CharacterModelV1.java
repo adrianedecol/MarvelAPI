@@ -25,14 +25,16 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name="CHARACTER")
 @Getter
 @Setter
 @ConstructorBinding
 @NoArgsConstructor
+@ToString
 @Component
+@Entity
+@Table(name="CHARACTER")
 public class CharacterModelV1 implements Serializable {
 
 	private static final long serialVersionUID = 1L;

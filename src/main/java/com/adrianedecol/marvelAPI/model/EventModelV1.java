@@ -1,7 +1,6 @@
 package com.adrianedecol.marvelAPI.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,21 +11,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.internal.IgnoreForbiddenApisErrors;
 import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name="EVENT")
 @Getter
 @Setter
 @ConstructorBinding
 @NoArgsConstructor
+@ToString
 @Component
+@Entity
+@Table(name="EVENT")
 public class EventModelV1 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

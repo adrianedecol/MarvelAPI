@@ -15,6 +15,7 @@ import java.util.List;
 import com.adrianedecol.marvelAPI.model.CharacterModelV1;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 class CharacterControllerV1Tests {
 	
 	private final String URI = "/v1/public/characters";
@@ -31,7 +32,9 @@ class CharacterControllerV1Tests {
 
 	@Test
 	public void retornarStatusNOTFOUND() throws Exception {
-		//@@TODO
+		ResponseEntity<CharacterModelV1> response = restTemplate.exchange(
+				URI.concat("/999"), HttpMethod.GET, null, new ParameterizedTypeReference<CharacterModelV1>() {});
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
 	
 }

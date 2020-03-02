@@ -17,14 +17,16 @@ import org.springframework.stereotype.Component;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
-@Table(name="SERIE")
 @Getter
 @Setter
 @ConstructorBinding
 @NoArgsConstructor
+@ToString
 @Component
+@Entity
+@Table(name="SERIE")
 public class SerieModelV1 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
