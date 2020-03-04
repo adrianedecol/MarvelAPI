@@ -2,6 +2,8 @@
 
 API de catálogo de super-heróis da Marvel, baseado em https://developer.marvel.com/docs#!/public.
 
+[![CodeFactor](https://www.codefactor.io/repository/github/adrianedecol/marvelapi/badge/feature/characters)](https://www.codefactor.io/repository/github/adrianedecol/marvelapi/overview/feature/characters)
+
 ## Tecnologias Utilizadas
 
 | # | Para que |
